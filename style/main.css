@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "fonts/clear-sans.css";
 html, body {
   margin: 0;
@@ -194,9 +195,9 @@ hr {
   background: rgba(238, 228, 218, 0.5);
   z-index: 100;
   text-align: center;
-  -webkit-animation: fade-in 800ms ease 1200ms;
-  -moz-animation: fade-in 800ms ease 1200ms;
-  animation: fade-in 800ms ease 1200ms;
+  -webkit-animation: fade-in 800ms ease 2400ms;
+  -moz-animation: fade-in 800ms ease 2400ms;
+  animation: fade-in 800ms ease 2400ms;
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
   animation-fill-mode: both;
@@ -271,17 +272,22 @@ hr {
   z-index: 2;
 }
 
-.tile, .tile .tile-inner {
+.tile {
   padding: 10px;
-  width: 67px;
-  height: 67px;
+}
+.tile .tile-inner {
+  width: 87px;
+  height: 87px;
   line-height: 67px;
   transform: rotate(45deg);
-  box-shadow: inset -5px -5px 0 black;
+  box-shadow: inset -5px -5px 0 rgba(0, 0, 0, 0.5);
 }
-.tile:after, .tile .tile-inner:after {
-  content: "o";
+.tile .tile-inner:after {
+  content: "●";
   color: white;
+  position: absolute;
+  top: -5px;
+  left: 15px;
 }
 .tile.tile-position-1-1 {
   -webkit-transform: translate(0px, 0px);
@@ -382,9 +388,9 @@ hr {
 
 .tile {
   position: absolute;
-  -webkit-transition: 100ms ease-in-out;
-  -moz-transition: 100ms ease-in-out;
-  transition: 100ms ease-in-out;
+  -webkit-transition: 200ms ease-in-out;
+  -moz-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
   transition-property: transform;
@@ -461,7 +467,7 @@ hr {
   }
 }
 .tile.tile-1024 .tile-inner {
-  background: hsl(285, 80%, 70%);
+  background: hsl(265, 75%, 75%);
   color: transparent;
   border-radius: 45%;
   font-size: 35px;
@@ -472,7 +478,7 @@ hr {
   }
 }
 .tile.tile-2048 .tile-inner {
-  background: hsl(320, 99%, 80%);
+  background: hsl(280, 90%, 80%);
   color: transparent;
   border-radius: 45%;
   font-size: 35px;
@@ -542,9 +548,9 @@ hr {
   }
 }
 .tile-new .tile-inner {
-  -webkit-animation: appear 200ms ease 100ms;
-  -moz-animation: appear 200ms ease 100ms;
-  animation: appear 200ms ease 100ms;
+  -webkit-animation: appear 200ms ease 1200ms;
+  -moz-animation: appear 200ms ease 1200ms;
+  animation: appear 200ms ease 1200ms;
   -webkit-animation-fill-mode: backwards;
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards;
@@ -612,9 +618,9 @@ hr {
 }
 .tile-merged .tile-inner {
   z-index: 20;
-  -webkit-animation: pop 200ms ease 100ms;
-  -moz-animation: pop 200ms ease 100ms;
-  animation: pop 200ms ease 100ms;
+  -webkit-animation: pop 200ms ease 200ms;
+  -moz-animation: pop 200ms ease 200ms;
+  animation: pop 200ms ease 200ms;
   -webkit-animation-fill-mode: backwards;
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards;
@@ -717,9 +723,9 @@ hr {
     background: rgba(238, 228, 218, 0.5);
     z-index: 100;
     text-align: center;
-    -webkit-animation: fade-in 800ms ease 1200ms;
-    -moz-animation: fade-in 800ms ease 1200ms;
-    animation: fade-in 800ms ease 1200ms;
+    -webkit-animation: fade-in 800ms ease 2400ms;
+    -moz-animation: fade-in 800ms ease 2400ms;
+    animation: fade-in 800ms ease 2400ms;
     -webkit-animation-fill-mode: both;
     -moz-animation-fill-mode: both;
     animation-fill-mode: both;
@@ -789,17 +795,22 @@ hr {
     position: absolute;
     z-index: 2;
   }
-  .tile, .tile .tile-inner {
+  .tile {
     padding: 10px;
-    width: 67px;
-    height: 67px;
+  }
+  .tile .tile-inner {
+    width: 87px;
+    height: 87px;
     line-height: 67px;
     transform: rotate(45deg);
-    box-shadow: inset -5px -5px 0 black;
+    box-shadow: inset -5px -5px 0 rgba(0, 0, 0, 0.5);
   }
-  .tile:after, .tile .tile-inner:after {
-    content: "o";
+  .tile .tile-inner:after {
+    content: "●";
     color: white;
+    position: absolute;
+    top: -5px;
+    left: 15px;
   }
   .tile.tile-position-1-1 {
     -webkit-transform: translate(0px, 0px);

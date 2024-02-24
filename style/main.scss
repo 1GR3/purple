@@ -19,7 +19,7 @@ $tile-gold-glow-color: lighten($tile-gold-color, 15%);
 $game-container-margin-top: 40px;
 $game-container-background: #100d0a;
 
-$transition-speed: 100ms;
+$transition-speed: 200ms;
 
 html, body {
   margin: 0;
@@ -289,16 +289,20 @@ hr {
   }
 
   .tile {
-    &, .tile-inner {
-      padding: 10px;
-      width: ceil($tile-size - 40px);
-      height: ceil($tile-size - 40px);
+    padding: 10px;
+    .tile-inner {
+      
+      width: ceil($tile-size - 20px);
+      height: ceil($tile-size - 20px);
       line-height: ceil($tile-size - 40px);
       transform: rotate(45deg);
-      box-shadow: inset -5px -5px 0 black;
+      box-shadow: inset -5px -5px 0 rgba(black,.5);
       &:after {
-        content: "o";
+        content: "●";
         color: white;
+        position: absolute;
+        top: -5px;
+        left: 15px;
       }
     }
 
@@ -347,14 +351,14 @@ $base: 2;
     hsl(0, 80%, 40%),   // Color for 2
     hsl(20, 85%, 45%),  // Color for 4
     hsl(40, 90%, 50%),  // Color for 8
-    hsl(55, 100%, 45%),  // Color for 16
-    hsl(80, 80%, 50%), // Color for 32
-    hsl(135, 80%, 60%), // Color for 64
+    hsl(55, 100%, 43%),  // Color for 16
+    hsl(80, 80%, 47%), // Color for 32
+    hsl(135, 75%, 55%), // Color for 64
     hsl(190, 80%, 60%), // Color for 128
     hsl(205, 80%, 60%), // Color for 256
     hsl(240, 80%, 75%), // Color for 512
-    hsl(285, 80%, 70%), // Color for 1024
-    hsl(320, 99%, 80%)  // Color for 2048
+    hsl(265, 75%, 75%), // Color for 1024
+    hsl(280, 90%, 80%)  // Color for 2048
   );
   
   // Adjust the glow based on the tile value
@@ -417,7 +421,7 @@ $base: 2;
 }
 
 .tile-new .tile-inner {
-  @include animation(appear 200ms ease $transition-speed);
+  @include animation(appear 200ms ease $transition-speed*6);
   @include animation-fill-mode(backwards);
 }
 
