@@ -4,7 +4,9 @@
 $field-width: 500px;
 $grid-spacing: 15px;
 $grid-row-cells: 4;
-$tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
+//$tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
+$tile-size: calc(($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells);
+
 $tile-border-radius: 3px;
 
 $mobile-threshold: $field-width + 20px;
@@ -25,7 +27,7 @@ html, body {
   margin: 0;
   padding: 0;
 
-  background: #faf8ef;
+  background: black;
   color: $text-color;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
@@ -37,14 +39,24 @@ body {
 
 .heading {
   @include clearfix;
+  position: relative;
+  span {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    letter-spacing: 2.2px;
+  }
 }
-
+.purple {
+  color: hsl(280, 90%, 80%);
+}
 h1.title {
   font-size: 80px;
   font-weight: bold;
   margin: 0;
   display: block;
   float: left;
+  color: hsl(280, 90%, 80%);
 }
 
 @include keyframes(move-up) {
@@ -62,6 +74,7 @@ h1.title {
 .scores-container {
   float: right;
   text-align: right;
+  padding-top: 24px;
 }
 
 .score-container, .best-container {
@@ -471,7 +484,7 @@ $base: 2;
   $field-width: 280px;
   $grid-spacing: 10px;
   $grid-row-cells: 4;
-  $tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
+  $tile-size: calc(($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells);
   $tile-border-radius: 3px;
   $game-container-margin-top: 17px;
 
