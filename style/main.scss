@@ -5,13 +5,15 @@ $field-width: 500px;
 $grid-spacing: 15px;
 $grid-row-cells: 4;
 //$tile-size: ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells;
-$tile-size: calc(($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells);
+$tile-size: calc(
+  ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells
+);
 
 $tile-border-radius: 3px;
 
 $mobile-threshold: $field-width + 20px;
 
-$text-color: #776E65;
+$text-color: #776e65;
 $bright-text-color: #f9f6f2;
 
 $tile-color: #eee4da;
@@ -23,7 +25,8 @@ $game-container-background: #100d0a;
 
 $transition-speed: 200ms;
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 
@@ -77,7 +80,8 @@ h1.title {
   padding-top: 24px;
 }
 
-.score-container, .best-container {
+.score-container,
+.best-container {
   $height: 25px;
 
   position: relative;
@@ -112,7 +116,7 @@ h1.title {
     font-size: $height;
     line-height: $height;
     font-weight: bold;
-    color: rgba($text-color, .9);
+    color: rgba($text-color, 0.9);
     z-index: 100;
     @include animation(move-up 600ms ease-in);
     @include animation-fill-mode(both);
@@ -214,7 +218,7 @@ hr {
       right: 0;
       bottom: 0;
       left: 0;
-      background: rgba($tile-color, .5);
+      background: rgba($tile-color, 0.5);
       z-index: 100;
 
       text-align: center;
@@ -239,24 +243,25 @@ hr {
         margin-left: 9px;
         // margin-top: 59px;
 
-	&.keep-playing-button {
-	  display: none;
-	}
+        &.keep-playing-button {
+          display: none;
+        }
       }
 
       @include animation(fade-in 800ms ease $transition-speed * 12);
       @include animation-fill-mode(both);
 
       &.game-won {
-        background: rgba($tile-gold-color, .5);
+        background: rgba($tile-gold-color, 0.5);
         color: $bright-text-color;
 
-	a.keep-playing-button {
-	  display: inline-block;
-	}
+        a.keep-playing-button {
+          display: inline-block;
+        }
       }
 
-      &.game-won, &.game-over {
+      &.game-won,
+      &.game-over {
         display: block;
       }
     }
@@ -289,7 +294,7 @@ hr {
 
     border-radius: $tile-border-radius;
 
-    background: rgba(black, .75);
+    background: rgba(black, 0.75);
 
     &:last-child {
       margin-right: 0;
@@ -304,12 +309,11 @@ hr {
   .tile {
     padding: 10px;
     .tile-inner {
-      
       width: ceil($tile-size - 20px);
       height: ceil($tile-size - 20px);
       line-height: ceil($tile-size - 40px);
       transform: rotate(45deg);
-      box-shadow: inset -5px -5px 0 rgba(black,.5);
+      box-shadow: inset -5px -5px 0 rgba(black, 0.5);
       &:after {
         content: "●";
         color: white;
@@ -355,41 +359,51 @@ hr {
   -moz-transition-property: -moz-transform;
   transition-property: transform;
 
-$base: 2;
+  $base: 2;
   $exponent: 1;
   $limit: 11;
-  
+
   // Manually specify 11 HSL colors
   $hsl-colors: (
-    hsl(0, 80%, 40%),   // Color for 2
-    hsl(20, 85%, 45%),  // Color for 4
-    hsl(40, 90%, 50%),  // Color for 8
-    hsl(55, 100%, 43%),  // Color for 16
-    hsl(80, 80%, 47%), // Color for 32
-    hsl(135, 75%, 55%), // Color for 64
-    hsl(190, 80%, 60%), // Color for 128
-    hsl(205, 80%, 60%), // Color for 256
-    hsl(240, 80%, 75%), // Color for 512
-    hsl(265, 75%, 75%), // Color for 1024
-    hsl(280, 90%, 80%)  // Color for 2048
+    hsl(0, 80%, 40%),
+    // Color for 2
+    hsl(20, 78%, 49%),
+    // Color for 4
+    hsl(38, 100%, 46%),
+    // Color for 8
+    hsl(55, 100%, 43%),
+    // Color for 16
+    hsl(80, 85%, 52%),
+    // Color for 32
+    hsl(135, 75%, 55%),
+    // Color for 64
+    hsl(190, 82%, 57%),
+    // Color for 128
+    hsl(205, 78%, 61%),
+    // Color for 256
+    hsl(240, 80%, 75%),
+    // Color for 512
+    hsl(265, 75%, 75%),
+    // Color for 1024
+    hsl(280, 90%, 80%) // Color for 2048
   );
-  
+
   // Adjust the glow based on the tile value
   @while $exponent <= $limit {
     $power: pow($base, $exponent);
-  
+
     &.tile-#{$power} .tile-inner {
       $hsl-color: nth($hsl-colors, $exponent);
-  
+
       background: $hsl-color;
       color: transparent;
       border-radius: 45%;
       // Dynamic shadow that inherits the background color
       $shadow-color: rgba($hsl-color, 0.5); // Adjust the opacity as needed
-      $shadow-size: $exponent * .2; // Increase the size based on the exponent
+      $shadow-size: $exponent * 0.2; // Increase the size based on the exponent
       $shadow-opacity: $exponent * 0.05; // Increase opacity gradually
       //box-shadow: 0 0 #{ $shadow-size }px #{ $shadow-size }px $shadow-color;
-  
+
       // Adjust font size for bigger numbers, keeping your original logic
       @if $power >= 100 and $power < 1000 {
         font-size: 45px;
@@ -403,10 +417,9 @@ $base: 2;
         }
       }
     }
-  
+
     $exponent: $exponent + 1;
   }
-
 
   // Super tiles (above 2048)
   &.tile-super .tile-inner {
@@ -434,7 +447,7 @@ $base: 2;
 }
 
 .tile-new .tile-inner {
-  @include animation(appear 200ms ease $transition-speed*6);
+  @include animation(appear 200ms ease $transition-speed * 6);
   @include animation-fill-mode(backwards);
 }
 
@@ -484,11 +497,14 @@ $base: 2;
   $field-width: 280px;
   $grid-spacing: 10px;
   $grid-row-cells: 4;
-  $tile-size: calc(($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells);
+  $tile-size: calc(
+    ($field-width - $grid-spacing * ($grid-row-cells + 1)) / $grid-row-cells
+  );
   $tile-border-radius: 3px;
   $game-container-margin-top: 17px;
 
-  html, body {
+  html,
+  body {
     font-size: 15px;
   }
 
@@ -507,7 +523,8 @@ $base: 2;
     margin: 0 auto;
   }
 
-  .score-container, .best-container {
+  .score-container,
+  .best-container {
     margin-top: 0;
     padding: 15px 10px;
     min-width: 40px;
